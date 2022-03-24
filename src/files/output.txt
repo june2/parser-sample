@@ -1,16 +1,14 @@
-Family name: KIM
-Given name: HS
 Address : ABC CDE
-MemberShip : GOLD 12345
+certfication : ABC CDE
 
-Family name: Doe
-Given name: John
 Address : AAA BBB
-MemberShip : SILVER 67890
+Address : 123 234
+certfication : ABC CDE
+certfication : 123 234
 
-Family name: Doe
-Given name: Jane
 Address : ? ?
-MemberShip : BRONZE 99999
+certfication : ? ?
+
+
 
 

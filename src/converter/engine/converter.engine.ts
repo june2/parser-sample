@@ -45,7 +45,7 @@ export abstract class ConverterEngine {
       for (const obj of findJsonValueByKey(this.user, value.target)) {
         let line = value.extractText;
         for (const [objKey, ojbValue] of value.replaceMap) {
-          line = line.replace(objKey, obj[ojbValue]);
+          line = line.replace(objKey, obj[ojbValue] ?? '?');
         }
         subText += line + '\n';
       }

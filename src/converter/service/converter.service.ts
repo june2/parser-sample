@@ -42,6 +42,15 @@ export class ConverterService {
   }
 
   do(): void {
+    if (!this.template) {
+      console.log('template이 설정 되어 있지 않습니다.!');
+      return;
+    }
+    if (!this.data) {
+      console.log('타겟 data가 설정 되어 있지 않습니다.!');
+      return;
+    }
+
     const converterEngine: ConverterEngineUser = new ConverterEngineUser(this.template);
 
     this.data.forEach((user: UserDto) => {

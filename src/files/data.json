@@ -1,11 +1,13 @@
 [
   {
     "info": {
+      "age": 20,
       "name": {
         "family": "KIM",
         "given": "HS"
       },
-      "addrs": [{ "addr1": "ABC", "addr2": "CDE" }]
+      "addrs": [{ "addr1": "ABC", "addr2": "CDE" }],
+      "certfication": [{ "name1": "ABC", "name2": "CDE" }]
     },
     "membership": {
       "grade": "GOLD",
@@ -22,6 +24,10 @@
       "addrs": [
         { "addr1": "AAA", "addr2": "BBB" },
         { "addr1": "123", "addr2": "234" }
+      ],
+      "certfication": [
+        { "name1": "ABC", "name2": "CDE" },
+        { "name1": "123", "name2": "234" }
       ]
     },
     "membership": {

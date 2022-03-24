@@ -1,0 +1,7 @@
+<? for ADDR in USER.info.addrs ?>
+Address : <?= ADDR.addr1?> <?= ADDR.addr2?>
+<? endfor ?>
+<? for CERT in USER.info.certfication ?>
+certfication : <?= CERT.name1?> <?= CERT.name2?>
+<? endfor ?>
+
