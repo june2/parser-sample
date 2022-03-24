@@ -1,71 +1,71 @@
-import { parseData, readFile, writeFile } from '../../utils/fileUtil';
-import { UserDto } from '../dto/user.dto';
-import { ConverterEngineUser } from '../engine/converter.engine.user';
+import { parseData, readFile, writeFile } from "../../utils/fileUtil"
+import { UserDto } from "../dto/user.dto"
+import { ConverterEngineUser } from "../engine/converter.engine.user"
 
 export class ConverterService {
-  private templateFilePath: string = 'files/template1.txt';
-  private inputFilePath: string = 'files/data.json';
-  private outputFilePath: string = 'files/output.txt';
-  private template: string;
-  private convertedData: string = '';
-  private data: Array<UserDto>;
+  private templateFilePath: string = "files/template1.txt"
+  private inputFilePath: string = "files/data.json"
+  private outputFilePath: string = "files/output.txt"
+  private template: string
+  private convertedData: string = ""
+  private data: Array<UserDto>
 
   setTemplate(template: string) {
-    this.template = template;
+    this.template = template
   }
 
   getTemplate() {
-    return this.template;
+    return this.template
   }
 
   setData(data: Array<UserDto>) {
-    this.data = data;
+    this.data = data
   }
 
   getData() {
-    return this.data;
+    return this.data
   }
 
   getConvertedData() {
-    return this.convertedData;
+    return this.convertedData
   }
 
   setTemplateFilePath(templateFilePath: string) {
-    this.templateFilePath = templateFilePath;
+    this.templateFilePath = templateFilePath
   }
 
   setOutputFilePath(outputFilePath: string) {
-    this.outputFilePath = outputFilePath;
+    this.outputFilePath = outputFilePath
   }
 
   setInputFilePath(inputFilePath: string) {
-    this.inputFilePath = inputFilePath;
+    this.inputFilePath = inputFilePath
   }
 
   importData(): void {
-    const text: string = readFile(this.inputFilePath);
-    this.data = parseData<Array<UserDto>>(text);
+    const text: string = readFile(this.inputFilePath)
+    this.data = parseData<Array<UserDto>>(text)
   }
 
   importTemplate(): void {
-    this.template = readFile(this.templateFilePath);
+    this.template = readFile(this.templateFilePath)
   }
 
   do(): void {
-    this.importTemplate();
-    this.importData();
+    this.importTemplate()
+    this.importData()
 
-    const converterEngine: ConverterEngineUser = new ConverterEngineUser(this.template);
+    const converterEngine: ConverterEngineUser = new ConverterEngineUser(this.template)
 
     this.data.forEach((user: UserDto) => {
-      const out = converterEngine.setUser(user).convertMulti().convertSingle().getText();
-      this.convertedData += out;
-    });
+      const out = converterEngine.setUser(user).convertMulti().convertSingle().getText()
+      this.convertedData += out
+    })
   }
 
   export(): void {
-    this.do();
-    writeFile(this.outputFilePath, this.convertedData);
+    this.do()
+    writeFile(this.outputFilePath, this.convertedData)
   }
 
   // if (checkAdmin(this.template)) {
