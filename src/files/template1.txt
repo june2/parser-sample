@@ -1,0 +1,5 @@
+Family name: <?=USER.info.name.family?>
+Given name: <?=USER.info.name.given ?>
+Address : <?= USER.info.addrs.0.addr1?> <?= USER.info.addrs.0.addr2?>
+MemberShip : <?=USER.membership.grade?> <?= USER.membership.id ?>
+
