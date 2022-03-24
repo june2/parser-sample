@@ -15,7 +15,7 @@ describe('Given, template이 2번', () => {
     converterService.do();
 
     const expected = `Name: HS KIM\nAddress : ABC CDE\n\n`;
-    expect(converterService.getConvertedData()).toBe(expected);
+    expect(converterService.getConvertedText()).toBe(expected);
     done();
   });
 
@@ -25,7 +25,7 @@ describe('Given, template이 2번', () => {
 
     const expected = `Name: John Doe\nAddress : AAA BBB\nAddress : 123 234\n\n`;
 
-    expect(converterService.getConvertedData()).toBe(expected);
+    expect(converterService.getConvertedText()).toBe(expected);
     done();
   });
 });

@@ -1,57 +1,57 @@
-import { parseData, readFile, writeFile } from "../../utils/fileUtil"
-import { UserDto } from "../dto/user.dto"
-import { ConverterEngineUser } from "../engine/converter.engine.user"
+import { parseData, readFile, writeFile } from '../../utils/fileUtil';
+import { UserDto } from '../dto/user.dto';
+import { ConverterEngineUser } from '../engine/converter.engine.user';
 
 export class ConverterService {
-  private outputFilePath: string = "files/output.txt"
-  private convertedData: string = ""
-  private template: string
-  private data: Array<UserDto>
+  private outputFilePath: string = 'files/output.txt';
+  private convertedText: string = '';
+  private template: string;
+  private data: Array<UserDto>;
 
-  setTemplate(template: string) {
-    this.template = template
+  setTemplate(template: string): void {
+    this.template = template;
   }
 
-  getTemplate() {
-    return this.template
+  getTemplate(): string {
+    return this.template;
   }
 
-  setData(data: Array<UserDto>) {
-    this.data = data
+  setData(data: Array<UserDto>): void {
+    this.data = data;
   }
 
-  getData() {
-    return this.data
+  getData(): Array<UserDto> {
+    return this.data;
   }
 
-  getConvertedData() {
-    return this.convertedData
+  getConvertedText(): string {
+    return this.convertedText;
   }
 
-  setTemplateFilePath(templateFilePath: string) {
-    this.template = readFile(templateFilePath)
+  setTemplateFilePath(templateFilePath: string): void {
+    this.template = readFile(templateFilePath);
   }
 
-  setInputFilePath(inputFilePath: string) {
-    const text: string = readFile(inputFilePath)
-    this.data = parseData<Array<UserDto>>(text)
+  setInputFilePath(inputFilePath: string): void {
+    const text: string = readFile(inputFilePath);
+    this.data = parseData<Array<UserDto>>(text);
   }
 
-  setOutputFilePath(outputFilePath: string) {
-    this.outputFilePath = outputFilePath
+  setOutputFilePath(outputFilePath: string): void {
+    this.outputFilePath = outputFilePath;
   }
 
   do(): void {
-    const converterEngine: ConverterEngineUser = new ConverterEngineUser(this.template)
+    const converterEngine: ConverterEngineUser = new ConverterEngineUser(this.template);
 
     this.data.forEach((user: UserDto) => {
-      const out = converterEngine.setUser(user).convertMulti().convertSingle().getText()
-      this.convertedData += out
-    })
+      const out = converterEngine.setUser(user).convertMulti().convertSingle().getText();
+      this.convertedText += out;
+    });
   }
 
   export(): void {
-    this.do()
-    writeFile(this.outputFilePath, this.convertedData)
+    this.do();
+    writeFile(this.outputFilePath, this.convertedText);
   }
 }

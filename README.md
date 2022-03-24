@@ -3,11 +3,12 @@
 [x] template1 난이도 하
 [x] template2 난이도 중
 [ ] template3 난이도 상
-[x] template1,3 혼합 사용
+[x] template1,2 혼합 사용
 
 [x] template 새로운 필드 키 적용
+[x] template 필드 중복 적용
 [x] template loop 적용
-[ ] template loop 중복 적용
+[x] template loop 중복 적용
 
 ### 실행방법
 

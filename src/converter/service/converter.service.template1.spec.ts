@@ -15,7 +15,7 @@ describe('Given, template이 1번', () => {
 
     const expected = `Family name: KIM\nGiven name: HS\nAddress : ABC CDE\nMemberShip : GOLD 12345\n\n`;
 
-    expect(converterService.getConvertedData()).toBe(expected);
+    expect(converterService.getConvertedText()).toBe(expected);
     done();
   });
 
@@ -24,7 +24,7 @@ describe('Given, template이 1번', () => {
     converterService.do();
 
     const expected = `Family name: Doe\nGiven name: John\nAddress : AAA BBB\nMemberShip : SILVER 67890\n\n`;
-    expect(converterService.getConvertedData()).toBe(expected);
+    expect(converterService.getConvertedText()).toBe(expected);
     done();
   });
 
@@ -33,7 +33,7 @@ describe('Given, template이 1번', () => {
     converterService.do();
 
     const expected = `Family name: Doe\nGiven name: Jane\nAddress : ? ?\nMemberShip : BRONZE 99999\n\n`;
-    expect(converterService.getConvertedData()).toBe(expected);
+    expect(converterService.getConvertedText()).toBe(expected);
     done();
   });
 });

@@ -14,16 +14,20 @@ export abstract class ConverterEngine {
     this.findForMap = findFors(this.template);
   }
 
-  setUser(user: UserDto) {
+  getText(): string {
+    return this.text;
+  }
+
+  setUser(user: UserDto): ConverterEngine {
     this.user = user;
     this.text = this.template;
     return this;
   }
 
-  getText(): string {
-    return this.text;
-  }
-
+  /**
+   * <?= * ?> 단일 형식의 문장 추출하여 해당 값으로 대체
+   * @returns this
+   */
   convertSingle(): ConverterEngine {
     for (const [key, value] of this.replaceMap) {
       this.text = this.text.replaceAll(key, findJsonValueByKey(this.user, value));
@@ -31,6 +35,10 @@ export abstract class ConverterEngine {
     return this;
   }
 
+  /**
+   * <? for * in * ?>*<? endfor ?> 형식의 반복문 문법 추춯하여 해당 문장으로 대체
+   * @returns this
+   */
   convertMulti(): ConverterEngine {
     for (const [key, value] of this.findForMap) {
       let subText = '';
