@@ -8,7 +8,17 @@ export const parseData = <T>(data: string): T => {
   }
 };
 
-export const readFile = (inputPath: string) => {
+export const rempveFile = (path: string): void => {
+  try {
+    if (fs.existsSync(`${__dirname}/../${path}`)) {
+      const data = fs.unlinkSync(`${__dirname}/../${path}`);
+    }
+  } catch (error) {
+    throw new Error(JSON.stringify(error));
+  }
+};
+
+export const readFile = (inputPath: string): string => {
   try {
     const data = fs.readFileSync(`${__dirname}/../${inputPath}`, 'utf8');
     return data;
@@ -25,7 +35,7 @@ export const readFileStream = (inputPath: string) => {
   stream.on('data', (chunk) => console.log(chunk.toString()));
 };
 
-export const writeFile = (outputPath: string, data: string) => {
+export const writeFile = (outputPath: string, data: string): void => {
   try {
     fs.appendFileSync(`${__dirname}/../${outputPath}`, `${data}\r\n`);
   } catch (error) {

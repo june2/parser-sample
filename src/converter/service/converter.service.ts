@@ -1,4 +1,4 @@
-import { parseData, readFile, writeFile } from '../../utils/fileUtil';
+import { parseData, readFile, rempveFile, writeFile } from '../../utils/fileUtil';
 import { UserDto } from '../dto/user.dto';
 import { ConverterEngineUser } from '../engine/converter.engine.user';
 
@@ -60,6 +60,7 @@ export class ConverterService {
   }
 
   export(): void {
+    rempveFile(this.outputFilePath);
     this.do();
     writeFile(this.outputFilePath, this.convertedText);
   }
